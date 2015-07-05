@@ -1,0 +1,5 @@
+#!/bin/bash
+# Send the header so that i3bar knows we want to use JSON:
+echo "{\"version\":1}"
+echo "[[]"
+exec conky -c $HOME/.i3/conkyi3rc

@@ -1,0 +1,20 @@
+background        no
+out_to_console 	  no
+out_to_x	  no
+update_interval	  2
+total_run_times	  0
+short_units	  yes
+pad_percents	  3
+
+override_utf8_locale yes
+
+TEXT
+,[{"full_text": " ♥ ${top name 1} pid:${top pid 1} cpu:${top cpu 1} % ","color":"\#FFFFFF"},
+{"full_text": "  ☢ ${top_mem name 1} pid:${top_mem pid 1} cpu:${top_mem mem 1} % ","color":"\#cccccc"},
+
+{"full_text": " ≣ $battery_percent% ","color":"\#9933CC"},
+  {"full_text": " ♪ $mixer% ", "color":"\#268BD2"},
+  {"full_text": " ${time %a %d %b} ${time %H:%M} "},
+{"full_text": " ✉ ${exec cat /tmp/unread_notifications}", "color":"\#FAD613"}
+
+]

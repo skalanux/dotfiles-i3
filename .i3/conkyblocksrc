@@ -1,0 +1,11 @@
+background        no
+out_to_console 	  yes
+out_to_x	  no
+update_interval	  3
+total_run_times	  0
+short_units	  yes
+pad_percents	  3
+
+
+TEXT
+♥ ${top name 1} pid:${top pid 1} cpu:${top cpu 1} % ☢ ${top_mem name 1} pid:${top_mem pid 1} mem:${top_mem mem 1} % ≣ $battery_percent%

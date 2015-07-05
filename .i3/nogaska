@@ -1,0 +1,32 @@
+// Modified for a real Spanish keyboard by Jon Tombs.
+
+default  partial alphanumeric_keys
+xkb_symbols "basic" {
+
+    include "latin(type4)"
+
+    name[Group1]="Spanish";
+
+    key <AE01>	{ [         1,     exclam,          bar,   exclamdown ]	};
+    key <AE03>	{ [         3, periodcentered, numbersign,   sterling ]	};
+    key <AE04>	{ [         4,     dollar,   asciitilde,       dollar ]	};
+    key <AE06>	{ [         6,  ampersand,      notsign,  fiveeighths ]	};
+    key <AE11>	{ [apostrophe,   question,    backslash, questiondown ]	};
+    key <AE12>	{ [exclamdown, questiondown, dead_tilde,   asciitilde ]	};
+
+    key <AD11>	{ [dead_grave, dead_circumflex, bracketleft, dead_abovering ] };
+    key <AD12>	{ [      plus,   asterisk, bracketright,  dead_macron ]	};
+
+    key <AC10>	{ [    ntilde, Ntilde,   braceleft, dead_doubleacute ]	};
+    key <AC11>	{ [dead_acute, dead_diaeresis, braceright,   braceleft ]	};
+    key <AB08> { [        comma,      semicolon, less            ] };
+    key <AB09> { [       period,          colon, greater         ] };
+
+    key <TLDE>	{ [ masculine, ordfeminine,    backslash,   backslash ]	};
+    key <BKSL>	{ [  BackSpace,   Ccedilla,   braceright,   dead_breve ]	};
+    key <SCLK> { [  XF86AudioLowerVolume,   XF86AudioMute,   braceright,   dead_breve ]};
+    key <RWIN> { [  XF86AudioLowerVolume,  XF86Back,   dead_breve ]};
+    key <MENU> { [  XF86AudioRaiseVolume,   XF86AudioLowerVolume,   braceright,   dead_breve ]};
+
+    include "level3(ralt_switch)"
+};
