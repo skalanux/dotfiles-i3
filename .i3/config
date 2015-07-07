@@ -17,7 +17,7 @@ client.urgent           #242424 #900000 #ffffff #900000
 
 set $mod Mod4
 
-font xft:Ubuntu,FontAwesome 10
+font xft:Droid Sans,FontAwesome 9
 
 floating_modifier $mod
 
@@ -90,30 +90,30 @@ bindsym $mod+a focus parent
 bindcode $mod+c focus child
 
 # switch to workspace
-bindcode $mod+49 workspace 0 tasks
-bindsym $mod+1 workspace 1 slack
-bindsym $mod+2 workspace 2 www
-bindcode $mod+12 workspace 3 code
-bindsym $mod+4 workspace 4 multimedia
-bindsym $mod+5 workspace 5 temp
+bindcode $mod+49 workspace 0 
+bindsym $mod+1 workspace 1 
+bindsym $mod+2 workspace 2 
+bindcode $mod+12 workspace 3 
+bindsym $mod+4 workspace 4 
+bindsym $mod+5 workspace 5 
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 0 tasks
+bindsym $mod+0 workspace 0 
 
 # move focused container to workspace
-bindcode $mod+Shift+49 move workspace 0 tasks; workspace 0 tasks
-bindsym $mod+Shift+exclam move workspace 1 slack; workspace 1 slack
-bindsym $mod+Shift+quotedbl move workspace 2 www; workspace 2 www
-bindcode $mod+Shift+12 move workspace 3 code; workspace 3 code
-bindsym $mod+Shift+dollar move workspace 4 multimedia; workspace 4 multimedia
-bindsym $mod+Shift+percent move workspace 5 temp; workspace 5 temp;
+bindcode $mod+Shift+49 move workspace 0 ; workspace 0 
+bindsym $mod+Shift+exclam move workspace 1 ; workspace 1 
+bindsym $mod+Shift+quotedbl move workspace 2 ; workspace 2 
+bindcode $mod+Shift+12 move workspace 3 ; workspace 3 
+bindsym $mod+Shift+dollar move workspace 4 i; workspace 4 
+bindsym $mod+Shift+percent move workspace 5 ; workspace 5 ;
 bindsym $mod+Shift+ampersand move workspace 6; workspace 6
 bindsym $mod+Shift+slash move workspace 7; workspace 7
 bindsym $mod+Shift+parenleft move workspace 8; workspace 8
 bindsym $mod+Shift+parenright move workspace 9; workspace 9
-bindsym $mod+Shift+equal move workspace 0 tasks; workspace 0 tasks
+bindsym $mod+Shift+equal move workspace 0 ; workspace 0 
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
@@ -168,37 +168,22 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-## Start i3bar to display a workspace bar (plus the system information i3status
-## finds out, if available)
-#bar {
-#    position bottom
-#    status_command i3blocks
-#    font pango:Source Code Pro for Powerline 12px
-#    colors{
-#        background #242424
-#        focused_workspace #0D5a7a #0D5a7a #fdf6e3 #0D5a7a
-#        inactive_workspace #073642 #073642 #eee8d5 #6c71c4
-#        statusline #d64937
-#        }
-#}
-## Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
-        status_command i3status
-        status_command $HOME/.i3/conkyi3
+        status_command i3status -c $HOME/.i3/i3status.conf
+        #status_command $HOME/.i3/conkyi3
         colors {
             background #242424
             focused_workspace #0D5a7a #0d5a7a #fdf6e3 #0D5a7a
             inactive_workspace #073642 #073642 #eee8d5 #6c71c4
      }
-           font xft: Ubuntu Mono 12px,FontAwesome 13px
+           font xft: Droid Sans ,FontAwesome 10
 }
 
 exec urxvtd -q -o -f;urxvtc -name urxvt_python -e ipython;urxvtc -name master_volume -e alsamixer
 
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id compton
-exec --no-startup-id xfce4-notes
+#exec --no-startup-id xfce4-notes
 exec --no-startup-id gnome-settings-daemon
 #exec --no-startup-id ~/.i3/conkyblocks
 exec --no-startup-id synapse -s
@@ -212,7 +197,7 @@ exec --no-startup-id xcalc
 # Comment udiskie because is causing problems with docker
 #exec --no-startup-id udiskie
 
-exec --no-startup-id feh --bg-scale ~/Dropbox/Common/wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/Dropbox/Common/wallpaper.png
 
 for_window [instance="urxvt_python"] move to scratchpad, border 1pixel
 for_window [instance="cheater"] move to scratchpad, border 1pixel
@@ -220,8 +205,8 @@ for_window [instance="master_volume"] move to scratchpad border 1pixel
 for_window [class="XCalc"] move to scratchpad border 1pixel
 for_window [title="Google Keep"] move to scratchpad border 1pixel
 for_window [instance="synapse"] border none
-for_window [instance="trello.com__b_i5JvzdDB_inbox"] move to workspace 0 tasks
-for_window [instance="devecoop.slack.com__messages_importante"] move to workspace 1 slack
+for_window [instance="trello.com__b_i5JvzdDB_inbox"] move to workspace 0 
+for_window [instance="devecoop.slack.com__messages_importante"] move to workspace 1 
 exec --no-startup-id urxvtc -name urxvt_python -e ipython
 exec --no-startup-id urxvtc -name master_volume -e alsamixer
 
@@ -243,8 +228,8 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 # Scratchpad
 bindsym F12 [instance="master_volume"] scratchpad show
 bindsym F8 [instance="cheater"] scratchpad show
-bindsym F9  workspace 0 tasks;exec ~/.i3/webapps.sh trello
-bindsym F10  workspace 1 slack;exec ~/.i3/webapps.sh slack
+bindsym F9  workspace 0 ;exec ~/.i3/webapps.sh trello
+bindsym F10  workspace 1 ;exec ~/.i3/webapps.sh slack
 
 mode "launch (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive" {
         # c, chrome
@@ -253,8 +238,8 @@ mode "launch (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive" {
         #bindsym n [class="Xfce4-notes"] scratchpad show; mode "default"
         bindsym c [class="XCalc"] scratchpad show; mode "default"
         bindsym n  exec ~/.i3/webapps.sh keep; mode "default"
-        bindsym t  workspace 0 tasks;exec ~/.i3/webapps.sh trello; mode "default"
-        bindsym s  workspace 1 slack;exec ~/.i3/webapps.sh slack; mode "default"
+        bindsym t  workspace 0 ;exec ~/.i3/webapps.sh trello; mode "default"
+        bindsym s  workspace 1 ;exec ~/.i3/webapps.sh slack; mode "default"
         bindsym d  exec ~/.i3/webapps.sh drive; mode "default"
 
         # go back to normal (if we don't launch something)
