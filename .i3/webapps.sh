@@ -52,16 +52,16 @@ start ()
 {
     case "$@" in
         (slack)
-        focus instance devecoop.slack.com__messages_importante  /opt/google/chrome/google-chrome --app=https://devecoop.slack.com/messages/importante/
+        focus title Slack firefox -no-remote -P slack devecoop.slack.com
         ;;
         (trello)
-        focus instance trello.com__b_i5JvzdDB_inbox  /opt/google/chrome/google-chrome --app=https://trello.com/b/i5JvzdDB/inbox
+        focus title Trello firefox -no-remote -P trello https://trello.com/b/i5JvzdDB/inbox
         ;;
         (keep)
         focus title "Google Keep" /opt/google/chrome/chrome --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki 
         ;;
         (drive)
-        focus instance drive.google.com__drive_my-drive /opt/google/chrome/chrome  --app=https://drive.google.com/drive/my-drive
+        focus title  "Google Drive" firefox -no-remote -P drive https://drive.google.com/drive/my-drive
         ;;
 
 
