@@ -300,3 +300,9 @@ mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive" 
         bindsym Escape mode "default"
 }
 bindsym Control+Tab mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive"
+
+# This only works with i3 gaps
+#for_window[class="^.*"] border pixel 0
+#gaps inner 5
+#gaps outer 5
+#smart_gaps on
