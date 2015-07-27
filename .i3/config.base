@@ -170,7 +170,7 @@ bar {
         #status_command $HOME/.i3/conkyi3
 # $i3-theme-bar
            #font xft: Droid Sans ,FontAwesome 10
-           font xft: Monoid ,FontAwesome 10
+           font xft: Inconsolata for Powerline,FontAwesome 12
 }
 
 exec urxvtd -q -o -f;urxvtc -name urxvt_python -e ipython;urxvtc -name master_volume -e alsamixer
