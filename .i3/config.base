@@ -173,20 +173,16 @@ bar {
            font xft: Inconsolata for Powerline,FontAwesome 12
 }
 
-exec urxvtd -q -o -f;urxvtc -name urxvt_python -e ipython;urxvtc -name master_volume -e alsamixer
+exec urxvtd -q -o -f;urxvtc -name urxvt_python -e ipython
 
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id compton
-#exec --no-startup-id xfce4-notes
+exec --no-startup-id volumeicon
 exec --no-startup-id gnome-settings-daemon
-#exec --no-startup-id ~/.i3/conkyblocks
-#exec --no-startup-id synapse -s
 exec --no-startup-id nm-applet
 exec --no-startup-id nice -n 10 dropbox start
 exec --no-startup-id cheater
 exec --no-startup-id setxkbmap es -option terminate:ctrl_alt_bksp -option ctrl:nocaps
-#exec --no-startup-id /opt/google/chrome/google-chrome --app=https://trello.com/b/i5JvzdDB/inbox
-#exec --no-startup-id /opt/google/chrome/google-chrome --app=https://devecoop.slack.com/messages/importante/
 exec --no-startup-id xcalc
 # Comment udiskie because is causing problems with docker
 #exec --no-startup-id udiskie
@@ -199,32 +195,26 @@ exec_always --no-startup-id rofi -fuzzy true -key-run ALT+F2 -font "Ubuntu 10" -
 
 for_window [instance="urxvt_python"] move to scratchpad, border 1pixel
 for_window [instance="cheater"] move to scratchpad, border 1pixel
-for_window [instance="master_volume"] move to scratchpad border 1pixel
 for_window [class="XCalc"] move to scratchpad border 1pixel
 for_window [title="Google Keep"] move to scratchpad border 1pixel
-#for_window [instance="synapse"] border none
-for_window [instance="trello.com__b_i5JvzdDB_inbox"] move to workspace 0 
-for_window [instance="devecoop.slack.com__messages_importante"] move to workspace 1 
+#for_window [instance="trello.com__b_i5JvzdDB_inbox"] move to workspace 0 
+#for_window [instance="devecoop.slack.com__messages_importante"] move to workspace 1 
 exec --no-startup-id urxvtc -name urxvt_python -e ipython
-exec --no-startup-id urxvtc -name master_volume -e alsamixer
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # xfce4-notify
-for_window [class="Xfce4-notes"] floating enable;border none; focus mode_toggle
 for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
 bindsym $mod+l exec ~/.i3/lockpanta
-#bindsym $mod+less exec ~/.i3/reset_readmessages.py
-#bindsym Control+Tab exec i3-input -F 'exec ~/.i3/i3-wrapper.sh "%s"' -P Atajo:\  -f xft:Noto Sans 24
 
 # Key Volume
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 4%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 50%- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
-
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 4%+ unmute
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 50%- unmute
+#bindsym XF86AudioMute exec amixer -q set Master toggle
+#
 # Scratchpad
-bindsym F12 [instance="master_volume"] scratchpad show
+bindsym F12 [instance="xcalc"] scratchpad show
 bindsym F8 [instance="cheater"] scratchpad show
 bindsym F9  workspace 0 ;exec ~/.i3/webapps.sh trello
 bindsym F10  workspace 1 ;exec ~/.i3/webapps.sh slack
