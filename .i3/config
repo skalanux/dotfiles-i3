@@ -79,6 +79,8 @@ bindsym $mod+Right focus right
 # Move workspace to different monitor
 bindsym $mod+Mod1+Left move workspace to output left
 bindsym $mod+Mod1+Right move workspace to output right
+bindsym $mod+Mod1+Down move workspace to output down
+bindsym $mod+Mod1+Up move workspace to output up
 
 # Switch workspaces
 bindsym $mod+Control+Left workspace prev
