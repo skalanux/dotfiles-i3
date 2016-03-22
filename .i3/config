@@ -207,34 +207,85 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+#bar {
+        #status_command i3status -c $HOME/.i3/i3status.conf
+        ##status_command $HOME/.i3/conkyi3
+#colors {
+     ## status
+	#separator $blue
+     #background $baseA4
+	#statusline $baseB2
+
+     ####################
+	## solarized (clean)
+	####################
+     ## workclass 			border  backgr. text
+     #focused_workspace		$green  $green  $baseA3
+     #active_workspace		$cyan   $cyan   $baseA2
+     #inactive_workspace		$baseA2 $baseA2 $baseB1
+     #urgent_workspace		$orange $orange $baseB3
+     ##urgent_workspace		$yellow $yellow $baseB3
+
+	################################
+	## disable cyan? (clean/borders)
+	################################
+##	active_workspace		$custom $custom $baseB2
+##	active_workspace 		$baseB0 $custom $baseB2
+#}
+           #font xft: Droid Sans ,FontAwesome 10
+           ##font xft: Inconsolata for Powerline,FontAwesome 12
+#}
+set $black       #212121
+set $darkblack   #000000
+set $red         #fb4934
+set $darkred     #cc241d
+set $green       #b8bb26
+set $darkgreen   #98971a
+set $yellow      #fabd2f
+set $darkyellow  #d79921
+set $blue        #83a598
+set $darkblue    #458588
+set $magenta     #d3869b
+set $darkmagenta #b16286
+set $cyan        #8ec07c
+set $darkcyan    #689d6a
+set $white       #ebdbb2
+set $darkwhite   #a89984
+# set $background  #000000
+set $transparent #1d202100
+
 bar {
-        status_command i3status -c $HOME/.i3/i3status.conf
-        #status_command $HOME/.i3/conkyi3
-colors {
- 	# status
-	separator $blue
- 	background $baseA4
-	statusline $baseB2
+    #verbose yes
+    status_command i3blocks
+    #i3bar_command i3bar -t
+    #status_command i3status -c $HOME/.i3/i3status.conf
+    position top
+    font xft:Droid Sans, FontAwesome 11
+    strip_workspace_numbers yes
+    separator_symbol "■"
+    bindsym button4 nop
+    bindsym button5 nop
+    #tray_output eDP1
+    #tray_output LVDS-0
+    tray_padding 0
+    height 24
+    colors {
+        statusline         $white
+        background         $transparent
+        separator          $yellow
 
- 	###################
-	# solarized (clean)
-	###################
- 	# workclass 			border  backgr. text
- 	focused_workspace		$green  $green  $baseA3
- 	active_workspace		$cyan   $cyan   $baseA2
- 	inactive_workspace		$baseA2 $baseA2 $baseB1
- 	urgent_workspace		$orange $orange $baseB3
- 	#urgent_workspace		$yellow $yellow $baseB3
+#                          BORDER       BACKGROUND   TEXT
+        focused_workspace  $transparent $transparent $yellow
+        inactive_workspace $transparent $transparent $white
+        active_workspace   $transparent $transparent $white
+        urgent_workspace   $darkred     $darkred     $transparent
+        binding_mode       $transparent $transparent $yellow
+    }
+}
 
-	###############################
-	# disable cyan? (clean/borders)
-	###############################
-#	active_workspace		$custom $custom $baseB2
-#	active_workspace 		$baseB0 $custom $baseB2
-}
-           font xft: Droid Sans ,FontAwesome 10
-           #font xft: Inconsolata for Powerline,FontAwesome 12
-}
+
+
+
 
 exec urxvtd -q -o -f;urxvtc -name urxvt_python -e ipython
 
