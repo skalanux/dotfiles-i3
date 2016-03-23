@@ -310,8 +310,9 @@ exec_always --no-startup-id rofi -fuzzy true -key-run ALT+F2 -font "Ubuntu 10" -
 
 for_window [instance="urxvt_python"] move to scratchpad, border 1pixel
 for_window [instance="cheater"] move to scratchpad, border 1pixel
-for_window [class="XCalc"] move to scratchpad border 1pixel
+for_window [title="Calculadora"] move to scratchpad border 1pixel
 for_window [title="Google Keep"] move to scratchpad border 1pixel
+for_window [title="Yate Client"] floating enable
 #for_window [instance="trello.com__b_i5JvzdDB_inbox"] move to workspace 0 
 #for_window [instance="devecoop.slack.com__messages_importante"] move to workspace 1 
 exec --no-startup-id urxvtc -name urxvt_python -e ipython
@@ -329,7 +330,7 @@ bindsym $mod+l exec ~/.i3/lockpanta
 #bindsym XF86AudioMute exec amixer -q set Master toggle
 #
 # Scratchpad
-bindsym F12 [instance="xcalc"] scratchpad show
+bindsym F12 [title="Calculadora"] scratchpad show
 bindsym F8 [instance="cheater"] scratchpad show
 bindsym F9  workspace 0 ;exec ~/.i3/webapps.sh trello
 bindsym F10  workspace 1 ;exec ~/.i3/webapps.sh slack
