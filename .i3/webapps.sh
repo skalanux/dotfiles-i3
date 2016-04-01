@@ -57,8 +57,8 @@ start ()
         (trello)
         focus title Trello firefox -no-remote -P trello https://trello.com/b/i5JvzdDB/inbox
         ;;
-        (keep)
-        focus title "Google Keep" /opt/google/chrome/chrome --profile-directory=Default --app-id=hmjkmjkepdijhoojdojkdfohbdgmmhki 
+        (simplenote)
+        focus title "Simplenote" simplenote 
         ;;
         (drive)
         focus title  "Google Drive" firefox -no-remote -P drive https://drive.google.com/drive/my-drive

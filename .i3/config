@@ -59,7 +59,7 @@ floating_modifier $mod
 # workspace layout
 #workspace_layout tabbed
 bindsym $mod+Return exec ~/.i3/tmux-reattacher.sh
-bindsym $mod+Shift+Return exec xfce4-terminal
+bindsym $mod+Shift+Return exec terminator
 bindsym $mod+b exec firefox -p default
 #bindsym $mod+n exec nautilus --no-desktop
 bindsym $mod+n exec pcmanfm
@@ -292,12 +292,13 @@ exec urxvtd -q -o -f;urxvtc -name urxvt_python -e ipython
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id compton
 exec --no-startup-id volumeicon
-exec --no-startup-id gnome-settings-daemon
+#exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id nice -n 10 dropbox start
 exec --no-startup-id cheater
 exec --no-startup-id setxkbmap es -option terminate:ctrl_alt_bksp -option ctrl:nocaps
 exec --no-startup-id gcalctool
+exec --no-startup-id simplenote
 exec --no-startup-id vertical.sh
 # Comment udiskie because is causing problems with docker
 #exec --no-startup-id udiskie
@@ -309,7 +310,7 @@ exec_always --no-startup-id rofi -fuzzy true -key-run ALT+F2 -font "Ubuntu 10" -
 #exec_always --no-startup-id rofi -fuzzy true -key-window ALT+Tab -font "Ubuntu 10" -fg "#505050" -bg "#000000" -hlfg "#859900" -hlbg "#000000" -o 85
 
 for_window [instance="urxvt_python"] move to scratchpad, border 1pixel
-for_window [instance="cheater"] move to scratchpad, border 1pixel
+for_window [title="Simplenote"] move to scratchpad, border 1pixel
 for_window [title="Calculadora"] move to scratchpad border 1pixel
 for_window [title="Google Keep"] move to scratchpad border 1pixel
 for_window [title="Yate Client"] floating enable
@@ -339,9 +340,8 @@ mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive" 
         # c, chrome
         bindsym p [instance="urxvt_python"] scratchpad show ; mode "default"
         bindsym v [instance="master_volume"] scratchpad show ; mode "default"
-        #bindsym n [class="Xfce4-notes"] scratchpad show; mode "default"
         bindsym c [class="XCalc"] scratchpad show; mode "default"
-        bindsym n  exec ~/.i3/webapps.sh keep; mode "default"
+        bindsym n [title="Simplenote"] scratchpad show; mode "default"
         bindsym t  workspace 0 ;exec ~/.i3/webapps.sh trello; mode "default"
         bindsym s  workspace 1 ;exec ~/.i3/webapps.sh slack; mode "default"
         bindsym d  exec ~/.i3/webapps.sh drive; mode "default"
