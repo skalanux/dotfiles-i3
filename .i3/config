@@ -312,7 +312,6 @@ exec_always --no-startup-id rofi -fuzzy true -key-run ALT+F2 -font "Ubuntu 10" -
 for_window [instance="urxvt_python"] move to scratchpad, border 1pixel
 for_window [title="Simplenote"] move to scratchpad, border 1pixel
 for_window [title="Calculadora"] move to scratchpad border 1pixel
-for_window [title="Google Keep"] move to scratchpad border 1pixel
 for_window [title="Yate Client"] floating enable
 #for_window [instance="trello.com__b_i5JvzdDB_inbox"] move to workspace 0 
 #for_window [instance="devecoop.slack.com__messages_importante"] move to workspace 1 
@@ -331,16 +330,16 @@ bindsym $mod+l exec ~/.i3/lockpanta
 #bindsym XF86AudioMute exec amixer -q set Master toggle
 #
 # Scratchpad
-bindsym F12 [title="Calculadora"] scratchpad show
-bindsym F8 [instance="cheater"] scratchpad show
-bindsym F9  workspace 0 ;exec ~/.i3/webapps.sh trello
-bindsym F10  workspace 1 ;exec ~/.i3/webapps.sh slack
+#bindsym F12 [title="Calculadora"] scratchpad show
+#bindsym F8 [instance="cheater"] scratchpad show
+#bindsym F9  workspace 0 ;exec ~/.i3/webapps.sh trello
+#bindsym F10  workspace 1 ;exec ~/.i3/webapps.sh slack
 
 mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive" {
         # c, chrome
         bindsym p [instance="urxvt_python"] scratchpad show ; mode "default"
         bindsym v [instance="master_volume"] scratchpad show ; mode "default"
-        bindsym c [class="XCalc"] scratchpad show; mode "default"
+        bindsym c [title="Calculadora"] scratchpad show; mode "default"
         bindsym n [title="Simplenote"] scratchpad show; mode "default"
         bindsym t  workspace 0 ;exec ~/.i3/webapps.sh trello; mode "default"
         bindsym s  workspace 1 ;exec ~/.i3/webapps.sh slack; mode "default"
@@ -351,6 +350,12 @@ mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive" 
         bindsym Escape mode "default"
 }
 bindsym Control+Tab mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive"
+#bindsym F9 mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive"
+
+# Terminals to show up on workspace 3
+assign [class="^Terminator$"] 3 
+for_window [class="^Terminator$"] workspace 3 
+
 
 # This only works with i3 gaps
 #for_window[class="^.*"] border pixel 0
