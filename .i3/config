@@ -313,7 +313,7 @@ exec_always --no-startup-id rofi -fuzzy true -key-run ALT+F2 -font "Ubuntu 10" -
 #exec_always --no-startup-id rofi -fuzzy true -key-window ALT+Tab -font "Ubuntu 10" -fg "#505050" -bg "#000000" -hlfg "#859900" -hlbg "#000000" -o 85
 
 for_window [instance="urxvt_python"] move to scratchpad, border 1pixel
-for_window [title="Simplenote"] move to scratchpad, border 1pixel
+for_window [title="^Simplenote$"] move to scratchpad, border 1pixel
 for_window [title="Calculadora"] move to scratchpad border 1pixel
 for_window [title="Yate Client"] floating enable
 #for_window [instance="trello.com__b_i5JvzdDB_inbox"] move to workspace 0 
