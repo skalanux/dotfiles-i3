@@ -60,7 +60,7 @@ floating_modifier $mod
 #workspace_layout tabbed
 bindsym $mod+Return exec ~/.i3/tmux-reattacher.sh
 bindsym $mod+Shift+Return exec terminator
-bindsym $mod+b exec firefox -p default
+bindsym $mod+b exec firefox -p default ; workspace 2 
 #bindsym $mod+n exec nautilus --no-desktop
 bindsym $mod+n exec pcmanfm
 
@@ -358,6 +358,8 @@ bindsym Control+Tab mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack 
 # Terminals to show up on workspace 3
 assign [class="^Terminator$"] 3 
 for_window [class="^Terminator$"] workspace 3 
+
+assign [class="^Firefox$"] 2 
 
 
 # This only works with i3 gaps
