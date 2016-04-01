@@ -301,6 +301,8 @@ exec --no-startup-id gcalctool
 exec --no-startup-id simplenote
 exec --no-startup-id vertical.sh
 exec --no-startup-id clipit
+exec --no-startup-id yate-qt4
+exec --no-startup-id scudcloud
 # Comment udiskie because is causing problems with docker
 #exec --no-startup-id udiskie
 
