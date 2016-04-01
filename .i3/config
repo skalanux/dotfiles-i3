@@ -300,6 +300,7 @@ exec --no-startup-id setxkbmap es -option terminate:ctrl_alt_bksp -option ctrl:n
 exec --no-startup-id gcalctool
 exec --no-startup-id simplenote
 exec --no-startup-id vertical.sh
+exec --no-startup-id clipit
 # Comment udiskie because is causing problems with docker
 #exec --no-startup-id udiskie
 
