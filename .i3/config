@@ -58,7 +58,10 @@ floating_modifier $mod
 
 # workspace layout
 #workspace_layout tabbed
-bindsym $mod+Return exec ~/.i3/tmux-reattacher.sh
+#bindsym $mod+Return exec ~/.i3/tmux-reattacher.sh
+# Now I start tmux directly within terminator wich in turn fixes 256 color
+# problem on vim
+bindsym $mod+Return exec terminator
 bindsym $mod+Shift+Return exec terminator
 bindsym $mod+b exec firefox -p default ; workspace 2 
 #bindsym $mod+n exec nautilus --no-desktop
