@@ -58,7 +58,7 @@ floating_modifier $mod
 
 # workspace layout
 workspace_layout tabbed
-bindsym $mod+Return exec ~/.i3/tmux-reattacher.sh
+bindsym $mod+Return exec terminator
 bindsym $mod+Shift+Return exec xfce4-terminal
 bindsym $mod+b exec firefox -p default
 bindsym $mod+n exec nautilus --no-desktop

@@ -52,7 +52,7 @@ start ()
 {
     case "$@" in
         (slack)
-        focus title Slack firefox -no-remote -P slack devecoop.slack.com
+        focus title ScudCloud scudcloud
         ;;
         (trello)
         focus title Trello firefox -no-remote -P trello https://trello.com/b/i5JvzdDB/inbox
