@@ -64,8 +64,8 @@ floating_modifier $mod
 bindsym $mod+Return exec terminator
 bindsym $mod+Shift+Return exec terminator -p notmux
 bindsym $mod+b exec firefox -p default ; workspace 2 
-#bindsym $mod+n exec nautilus --no-desktop
-bindsym $mod+n exec pcmanfm
+bindsym $mod+n exec nautilus --no-desktop
+#bindsym $mod+n exec pcmanfm
 
 # kill focused window
 bindsym $mod+q kill
@@ -262,7 +262,7 @@ bar {
     status_command i3blocks
     #i3bar_command i3bar -t
     #status_command i3status -c $HOME/.i3/i3status.conf
-    position top
+    position bottom
     font xft:Droid Sans, FontAwesome 11
     strip_workspace_numbers yes
     separator_symbol "■"
