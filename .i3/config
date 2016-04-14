@@ -336,7 +336,7 @@ exec --no-startup-id clipit
 # Comment udiskie because is causing problems with docker
 #exec --no-startup-id udiskie
 
-exec --no-startup-id feh --bg-scale ~/Dropbox/Common/wallpaper.png
+exec_always --no-startup-id feh --bg-scale ~/.i3/wallpaper.png
 
 exec_always --no-startup-id rofi -key-ssh F1  -terminal "${HOME}/.i3/tmux-ssh-launch.sh" -fuzzy true -font "Carlito 14" -fg "#505050" -bg "#000000" -hlfg "#859900" -hlbg "#000000" -opacity 85 -padding 10
 
