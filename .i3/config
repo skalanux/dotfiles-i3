@@ -272,18 +272,44 @@ bar {
     #tray_output LVDS-0
     tray_padding 0
     height 24
-    colors {
-        statusline         $white
-        background         $transparent
-        separator          $yellow
+#    colors {
+#        statusline         $white
+#        background         $transparent
+#        separator          $yellow
+#
+##                          BORDER       BACKGROUND   TEXT
+#        focused_workspace  $transparent $transparent $yellow
+#        inactive_workspace $transparent $transparent $white
+#        active_workspace   $transparent $transparent $white
+#        urgent_workspace   $darkred     $darkred     $transparent
+#        binding_mode       $transparent $transparent $yellow
+#    }
+#
+colors {
+     ## status
+	#separator $blue
+    background $baseA4
+	statusline $baseB2
 
-#                          BORDER       BACKGROUND   TEXT
-        focused_workspace  $transparent $transparent $yellow
-        inactive_workspace $transparent $transparent $white
-        active_workspace   $transparent $transparent $white
-        urgent_workspace   $darkred     $darkred     $transparent
-        binding_mode       $transparent $transparent $yellow
-    }
+     ####################
+	## solarized (clean)
+	####################
+     ## workclass 			border  backgr. text
+     focused_workspace		$green  $green  $baseA3
+     active_workspace		$cyan   $cyan   $baseA2
+     inactive_workspace		$baseA2 $baseA2 $baseB1
+     urgent_workspace		$orange $orange $baseB3
+     ##urgent_workspace		$yellow $yellow $baseB3
+
+	################################
+	## disable cyan? (clean/borders)
+	################################
+##	active_workspace		$custom $custom $baseB2
+##	active_workspace 		$baseB0 $custom $baseB2
+}
+
+
+
 }
 
 
@@ -304,8 +330,8 @@ exec --no-startup-id gcalctool
 exec --no-startup-id simplenote
 exec --no-startup-id vertical.sh
 exec --no-startup-id clipit
-exec --no-startup-id yate-qt4
-exec --no-startup-id scudcloud
+#exec --no-startup-id yate-qt4
+#exec --no-startup-id scudcloud
 # Comment udiskie because is causing problems with docker
 #exec --no-startup-id udiskie
 
