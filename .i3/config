@@ -353,8 +353,6 @@ exec --no-startup-id urxvtc -name urxvt_python -e ipython
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-# xfce4-notify
-for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
 bindsym $mod+l exec ~/.i3/lockpanta
 
 # Key Volume
@@ -403,7 +401,9 @@ assign [class="^Firefox$"] 2 
 #############################
 
 # Disable window titlebars entirely
-for_window [class="^.*"] border pixel 2
+for_window [class="^(?!Xfce4-notifyd$).*"] border pixel 2
+# xfce4-notify
+for_window [class="xfce4-notifyd"] floating enable;border none; focus mode_toggle
 
 # Set inner/outer gaps
 gaps inner 10
@@ -419,7 +419,7 @@ smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+#smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
