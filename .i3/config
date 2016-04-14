@@ -61,10 +61,11 @@ floating_modifier $mod
 #bindsym $mod+Return exec ~/.i3/tmux-reattacher.sh
 # Now I start tmux directly within terminator wich in turn fixes 256 color
 # problem on vim
-bindsym $mod+Return exec terminator
+bindsym $mod+Return workspace 3 ; exec terminator
 bindsym $mod+Shift+Return exec terminator -p notmux
-bindsym $mod+b exec firefox -p default ; workspace 2 
-bindsym $mod+n exec nautilus --no-desktop
+bindsym $mod+b workspace 2 ;exec firefox -p default;
+#bindsym $mod+n exec nautilus --no-desktop
+bindsym $mod+n exec nemo --no-desktop
 #bindsym $mod+n exec pcmanfm
 
 # kill focused window
@@ -383,12 +384,12 @@ mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive" 
 bindsym Control+Tab mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive"
 #bindsym F9 mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive"
 
-# Terminals to show up on workspace 3
-assign [class="^Terminator$"] 3 
-for_window [class="^Terminator$"] workspace 3 
-
-assign [class="^Firefox$"] 2 
-
+## Terminals to show up on workspace 3
+#assign [class="^Terminator$"] 3 
+#for_window [class="^Terminator$"] workspace 3 
+#
+#assign [class="^Firefox$"] 2 
+#
 
 # This only works with i3 gaps
 #for_window[class="^.*"] border pixel 0
