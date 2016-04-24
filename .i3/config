@@ -317,7 +317,7 @@ colors {
 
 
 
-exec urxvtd -q -o -f;urxvtc -name urxvt_python -e ipython
+#exec urxvtd -q -o -f;urxvtc -name urxvt_python -e ipython
 
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id compton
@@ -349,7 +349,7 @@ for_window [title="Calculadora"] move to scratchpad border 1pixel
 for_window [title="Yate Client"] floating enable
 #for_window [instance="trello.com__b_i5JvzdDB_inbox"] move to workspace 0 
 #for_window [instance="devecoop.slack.com__messages_importante"] move to workspace 1 
-exec --no-startup-id urxvtc -name urxvt_python -e ipython
+#exec --no-startup-id urxvtc -name urxvt_python -e ipython
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
