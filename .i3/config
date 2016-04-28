@@ -322,7 +322,7 @@ colors {
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id compton
 exec --no-startup-id volumeicon
-#exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id unity-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id nice -n 10 dropbox start
 exec --no-startup-id cheater
