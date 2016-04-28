@@ -260,8 +260,8 @@ set $transparent #1d202100
 
 bar {
     #verbose yes
-    status_command i3blocks
-    #i3bar_command i3bar -t
+    #status_command i3blocks
+    i3bar_command i3bar -t
     #status_command i3status -c $HOME/.i3/i3status.conf
     position bottom
     font xft:Ubuntu, FontAwesome 10
@@ -273,42 +273,42 @@ bar {
     #tray_output LVDS-0
     tray_padding 0
     height 24
-#    colors {
-#        statusline         $white
-#        background         $transparent
-#        separator          $yellow
+    colors {
+        statusline         $white
+        background         $transparent
+        separator          $yellow
+
+#                          BORDER       BACKGROUND   TEXT
+        focused_workspace  $transparent $transparent $yellow
+        inactive_workspace $transparent $transparent $white
+        active_workspace   $transparent $transparent $white
+        urgent_workspace   $darkred     $darkred     $transparent
+        binding_mode       $transparent $transparent $yellow
+    }
+
+#colors {
+#     ## status
+#	#separator $blue
+#    background $baseA4
+#	statusline $baseB2
 #
-##                          BORDER       BACKGROUND   TEXT
-#        focused_workspace  $transparent $transparent $yellow
-#        inactive_workspace $transparent $transparent $white
-#        active_workspace   $transparent $transparent $white
-#        urgent_workspace   $darkred     $darkred     $transparent
-#        binding_mode       $transparent $transparent $yellow
-#    }
+#     ####################
+#	## solarized (clean)
+#	####################
+#     ## workclass 			border  backgr. text
+#     focused_workspace		$green  $green  $baseA3
+#     active_workspace		$cyan   $cyan   $baseA2
+#     inactive_workspace		$baseA2 $baseA2 $baseB1
+#     urgent_workspace		$orange $orange $baseB3
+#     ##urgent_workspace		$yellow $yellow $baseB3
 #
-colors {
-     ## status
-	#separator $blue
-    background $baseA4
-	statusline $baseB2
-
-     ####################
-	## solarized (clean)
-	####################
-     ## workclass 			border  backgr. text
-     focused_workspace		$green  $green  $baseA3
-     active_workspace		$cyan   $cyan   $baseA2
-     inactive_workspace		$baseA2 $baseA2 $baseB1
-     urgent_workspace		$orange $orange $baseB3
-     ##urgent_workspace		$yellow $yellow $baseB3
-
-	################################
-	## disable cyan? (clean/borders)
-	################################
-##	active_workspace		$custom $custom $baseB2
-##	active_workspace 		$baseB0 $custom $baseB2
-}
-
+#	################################
+#	## disable cyan? (clean/borders)
+#	################################
+###	active_workspace		$custom $custom $baseB2
+###	active_workspace 		$baseB0 $custom $baseB2
+#}
+#
 
 
 }
