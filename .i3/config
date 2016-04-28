@@ -49,7 +49,7 @@ client.focused_inactive	#222 $baseA1 $baseA1 $baseA1
 
 set $mod Mod4
 
-font xft:Droid Sans,FontAwesome 10
+font xft:Cantarell,FontAwesome 10
 
 floating_modifier $mod
 
@@ -58,10 +58,15 @@ floating_modifier $mod
 
 # workspace layout
 workspace_layout tabbed
-bindsym $mod+Return exec terminator
-bindsym $mod+Shift+Return exec xfce4-terminal
-bindsym $mod+b exec firefox -p default
-bindsym $mod+n exec nautilus --no-desktop
+#bindsym $mod+Return exec ~/.i3/tmux-reattacher.sh
+# Now I start tmux directly within terminator wich in turn fixes 256 color
+# problem on vim
+bindsym $mod+Return workspace 3 ; exec terminator
+bindsym $mod+Shift+Return exec terminator -p notmux
+bindsym $mod+b workspace 2 ;exec firefox -p default;
+#bindsym $mod+n exec nautilus --no-desktop
+#bindsym $mod+n exec nemo --no-desktop
+bindsym $mod+n exec pcmanfm
 
 # kill focused window
 bindsym $mod+q kill
@@ -126,8 +131,8 @@ bindcode $mod+c focus child
 # switch to workspace
 bindcode $mod+49 workspace 0 
 bindsym $mod+1 workspace 1 
-bindsym $mod+2 workspace 2 
-bindcode $mod+12 workspace 3 
+bindsym $mod+2 workspace 2 
+bindcode $mod+12 workspace 3 
 bindsym $mod+4 workspace 4 
 bindsym $mod+5 workspace 5 
 bindsym $mod+6 workspace 6
@@ -139,8 +144,8 @@ bindsym $mod+0 workspace 0 
 # move focused container to workspace
 bindcode $mod+Shift+49 move workspace 0 ; workspace 0 
 bindsym $mod+Shift+exclam move workspace 1 ; workspace 1 
-bindsym $mod+Shift+quotedbl move workspace 2 ; workspace 2 
-bindcode $mod+Shift+12 move workspace 3 ; workspace 3 
+bindsym $mod+Shift+quotedbl move workspace 2 ; workspace 2 
+bindcode $mod+Shift+12 move workspace 3 ; workspace 3 
 bindsym $mod+Shift+dollar move workspace 4 ; workspace 4 
 bindsym $mod+Shift+percent move workspace 5 ; workspace 5 ;
 bindsym $mod+Shift+ampersand move workspace 6; workspace 6
@@ -154,19 +159,23 @@ bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.i3/i3exit lock, mode "default"
-        bindsym e exec --no-startup-id ~/.i3/i3exit logout, mode "default"
-        bindsym s exec --no-startup-id ~/.i3/i3exit suspend, mode "default"
-        bindsym h exec --no-startup-id ~/.i3/i3exit hibernate, mode "default"
-        bindsym r exec --no-startup-id ~/.i3/i3exit reboot, mode "default"
-        bindsym Shift+s exec --no-startup-id ~/.i3/i3exit shutdown, mode "default"
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
 bindsym $mod+Shift+e mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -202,68 +211,149 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+#bar {
+        #status_command i3status -c $HOME/.i3/i3status.conf
+        ##status_command $HOME/.i3/conkyi3
+#colors {
+     ## status
+	#separator $blue
+     #background $baseA4
+	#statusline $baseB2
+
+     ####################
+	## solarized (clean)
+	####################
+     ## workclass 			border  backgr. text
+     #focused_workspace		$green  $green  $baseA3
+     #active_workspace		$cyan   $cyan   $baseA2
+     #inactive_workspace		$baseA2 $baseA2 $baseB1
+     #urgent_workspace		$orange $orange $baseB3
+     ##urgent_workspace		$yellow $yellow $baseB3
+
+	################################
+	## disable cyan? (clean/borders)
+	################################
+##	active_workspace		$custom $custom $baseB2
+##	active_workspace 		$baseB0 $custom $baseB2
+#}
+           #font xft: Droid Sans ,FontAwesome 10
+           ##font xft: Inconsolata for Powerline,FontAwesome 12
+#}
+set $black       #212121
+set $darkblack   #000000
+set $red         #fb4934
+set $darkred     #cc241d
+set $green       #b8bb26
+set $darkgreen   #98971a
+set $yellow      #fabd2f
+set $darkyellow  #d79921
+set $blue        #83a598
+set $darkblue    #458588
+set $magenta     #d3869b
+set $darkmagenta #b16286
+set $cyan        #8ec07c
+set $darkcyan    #689d6a
+set $white       #ebdbb2
+set $darkwhite   #a89984
+# set $background  #000000
+set $transparent #1d202100
+
 bar {
-        status_command i3status -c $HOME/.i3/i3status.conf
-        #status_command $HOME/.i3/conkyi3
+    #verbose yes
+    status_command i3blocks
+    #i3bar_command i3bar -t
+    #status_command i3status -c $HOME/.i3/i3status.conf
+    position bottom
+    font xft:Ubuntu, FontAwesome 10
+    #strip_workspace_numbers yes
+    separator_symbol ""
+    bindsym button4 nop
+    bindsym button5 nop
+    #tray_output eDP1
+    #tray_output LVDS-0
+    tray_padding 0
+    height 24
+#    colors {
+#        statusline         $white
+#        background         $transparent
+#        separator          $yellow
+#
+##                          BORDER       BACKGROUND   TEXT
+#        focused_workspace  $transparent $transparent $yellow
+#        inactive_workspace $transparent $transparent $white
+#        active_workspace   $transparent $transparent $white
+#        urgent_workspace   $darkred     $darkred     $transparent
+#        binding_mode       $transparent $transparent $yellow
+#    }
+#
 colors {
- 	# status
-	separator $blue
- 	background $baseA4
+     ## status
+	#separator $blue
+    background $baseA4
 	statusline $baseB2
 
- 	###################
-	# solarized (clean)
-	###################
- 	# workclass 			border  backgr. text
- 	focused_workspace		$green  $green  $baseA3
- 	active_workspace		$cyan   $cyan   $baseA2
- 	inactive_workspace		$baseA2 $baseA2 $baseB1
- 	urgent_workspace		$orange $orange $baseB3
- 	#urgent_workspace		$yellow $yellow $baseB3
+     ####################
+	## solarized (clean)
+	####################
+     ## workclass 			border  backgr. text
+     focused_workspace		$green  $green  $baseA3
+     active_workspace		$cyan   $cyan   $baseA2
+     inactive_workspace		$baseA2 $baseA2 $baseB1
+     urgent_workspace		$orange $orange $baseB3
+     ##urgent_workspace		$yellow $yellow $baseB3
 
-	###############################
-	# disable cyan? (clean/borders)
-	###############################
-#	active_workspace		$custom $custom $baseB2
-#	active_workspace 		$baseB0 $custom $baseB2
-}
-           #font xft: Droid Sans ,FontAwesome 10
-           font xft: Inconsolata for Powerline,FontAwesome 12
+	################################
+	## disable cyan? (clean/borders)
+	################################
+##	active_workspace		$custom $custom $baseB2
+##	active_workspace 		$baseB0 $custom $baseB2
 }
 
-exec urxvtd -q -o -f;urxvtc -name urxvt_python -e ipython
+
+
+}
+
+
+
+
+
+#exec urxvtd -q -o -f;urxvtc -name urxvt_python -e ipython
 
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id compton
 exec --no-startup-id volumeicon
-exec --no-startup-id gnome-settings-daemon
+#exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id nice -n 10 dropbox start
 exec --no-startup-id cheater
 exec --no-startup-id setxkbmap es -option terminate:ctrl_alt_bksp -option ctrl:nocaps
-exec --no-startup-id xcalc
+exec --no-startup-id gcalctool
+exec --no-startup-id simplenote
+exec --no-startup-id vertical.sh
+exec --no-startup-id clipit
+#exec --no-startup-id yate-qt4
+#exec --no-startup-id scudcloud
 # Comment udiskie because is causing problems with docker
 #exec --no-startup-id udiskie
 
-exec --no-startup-id feh --bg-scale ~/Dropbox/Common/wallpaper.png
+exec_always --no-startup-id feh --bg-scale ~/.i3/wallpaper.png
 
-exec_always --no-startup-id rofi -key-ssh F1  -terminal "/home/ska/.i3/tmux-ssh-launch.sh" -fuzzy true -font "Ubuntu 10" -fg "#505050" -bg "#000000" -hlfg "#859900" -hlbg "#000000" -o 85
-exec_always --no-startup-id rofi -fuzzy true -key-run ALT+F2 -font "Ubuntu 10" -fg "#505050" -bg "#000000" -hlfg "#859900" -hlbg "#000000" -o 85
+exec_always --no-startup-id rofi -key-ssh F1  -terminal "${HOME}/.i3/tmux-ssh-launch.sh" -fuzzy true -font "Carlito 14" -fg "#505050" -bg "#000000" -hlfg "#859900" -hlbg "#000000" -opacity 85 -padding 10
+
+exec_always --no-startup-id rofi -fuzzy true -key-run ALT+F2 -font "Carlito 14" -fg "#505050" -bg "#000000" -hlfg "#859900" -hlbg "#000000" -opacity 85
 #exec_always --no-startup-id rofi -fuzzy true -key-window ALT+Tab -font "Ubuntu 10" -fg "#505050" -bg "#000000" -hlfg "#859900" -hlbg "#000000" -o 85
 
 for_window [instance="urxvt_python"] move to scratchpad, border 1pixel
-for_window [instance="cheater"] move to scratchpad, border 1pixel
-for_window [class="XCalc"] move to scratchpad border 1pixel
-for_window [title="Google Keep"] move to scratchpad border 1pixel
+for_window [title="^Simplenote$"] move to scratchpad, border 1pixel
+for_window [title="Calculadora"] move to scratchpad border 1pixel
+for_window [title="Yate Client"] floating enable
 #for_window [instance="trello.com__b_i5JvzdDB_inbox"] move to workspace 0 
 #for_window [instance="devecoop.slack.com__messages_importante"] move to workspace 1 
-exec --no-startup-id urxvtc -name urxvt_python -e ipython
+#exec --no-startup-id urxvtc -name urxvt_python -e ipython
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-# xfce4-notify
-for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
 bindsym $mod+l exec ~/.i3/lockpanta
 
 # Key Volume
@@ -272,18 +362,17 @@ bindsym $mod+l exec ~/.i3/lockpanta
 #bindsym XF86AudioMute exec amixer -q set Master toggle
 #
 # Scratchpad
-bindsym F12 [instance="xcalc"] scratchpad show
-bindsym F8 [instance="cheater"] scratchpad show
-bindsym F9  workspace 0 ;exec ~/.i3/webapps.sh trello
-bindsym F10  workspace 1 ;exec ~/.i3/webapps.sh slack
+#bindsym F12 [title="Calculadora"] scratchpad show
+#bindsym F8 [instance="cheater"] scratchpad show
+#bindsym F9  workspace 0 ;exec ~/.i3/webapps.sh trello
+#bindsym F10  workspace 1 ;exec ~/.i3/webapps.sh slack
 
 mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive" {
         # c, chrome
         bindsym p [instance="urxvt_python"] scratchpad show ; mode "default"
         bindsym v [instance="master_volume"] scratchpad show ; mode "default"
-        #bindsym n [class="Xfce4-notes"] scratchpad show; mode "default"
-        bindsym c [class="XCalc"] scratchpad show; mode "default"
-        bindsym n  exec ~/.i3/webapps.sh keep; mode "default"
+        bindsym c [title="Calculadora"] scratchpad show; mode "default"
+        bindsym n [title="Simplenote"] scratchpad show; mode "default"
         bindsym t  workspace 0 ;exec ~/.i3/webapps.sh trello; mode "default"
         bindsym s  workspace 1 ;exec ~/.i3/webapps.sh slack; mode "default"
         bindsym d  exec ~/.i3/webapps.sh drive; mode "default"
@@ -293,9 +382,79 @@ mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive" 
         bindsym Escape mode "default"
 }
 bindsym Control+Tab mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive"
+#bindsym F9 mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack (t)Trello (d)Drive"
+
+## Terminals to show up on workspace 3
+#assign [class="^Terminator$"] 3 
+#for_window [class="^Terminator$"] workspace 3 
+#
+#assign [class="^Firefox$"] 2 
+#
 
 # This only works with i3 gaps
 #for_window[class="^.*"] border pixel 0
 #gaps inner 5
 #gaps outer 5
 #smart_gaps on
+#
+##############################
+### settings for i3-gaps: ###
+#############################
+
+# Disable window titlebars entirely
+for_window [class="^(?!Xfce4-notifyd$).*"] border pixel 2
+# xfce4-notify
+for_window [class="xfce4-notifyd"] floating enable;border none; focus mode_toggle
+
+# Set inner/outer gaps
+gaps inner 10
+gaps outer 0
+
+# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
+# gaps inner|outer current|all set|plus|minus <px>
+# gaps inner all set 10
+# gaps outer all plus 5
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+#smart_borders on
+
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
