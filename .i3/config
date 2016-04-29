@@ -33,7 +33,7 @@ set $baseB3 #fdf6e3
 set $custom #1c5766
 
 # $i3-background
-exec_always --no-startup-id xsetroot -solid '$baseA2'
+#exec_always --no-startup-id xsetroot -solid '$baseB1'
 
 ###################
 # solarized (clean)
@@ -260,7 +260,7 @@ set $transparent #1d202100
 
 bar {
     #verbose yes
-    #status_command i3blocks
+    status_command i3blocks
     i3bar_command i3bar -t
     #status_command i3status -c $HOME/.i3/i3status.conf
     position bottom
