@@ -40,16 +40,16 @@ set $custom #1c5766
 ###################
 # clientclass 			border  backgr. text 	indicator
 client.focused  		#222 $baseA4 $green $baseA1
-client.unfocused	    #222 $baseA4 $baseA1 $baseA1
+client.unfocused	    #222 $baseA4 #ffffff $baseA1
 client.urgent 	 		$orange $orange $baseB3 $red
 #client.urgent 	 		$yellow $yellow $baseB3 $orange
 #client.focused_inactive 	$baseA2 $green $baseA2 $baseA1
-client.focused_inactive	#222 $baseA1 $baseA1 $baseA1
+client.focused_inactive	#222 $baseA1 #ffffff $baseA1
 
 
 set $mod Mod4
 
-font xft:Cantarell,FontAwesome 10
+font xft:Ubuntu,FontAwesome 10
 
 floating_modifier $mod
 
@@ -162,13 +162,13 @@ bindsym $mod+Shift+R restart
 bindsym $mod+Shift+e mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id ~/.i3/i3exit lock, mode "default"
+    bindsym s exec --no-startup-id ~/.i3/i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id ~/.i3/i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id ~/.i3/i3exit logout, mode "default"
+    bindsym h exec --no-startup-id ~/.i3/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.i3/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.i3/i3exit shutdown, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -256,7 +256,8 @@ set $darkcyan    #689d6a
 set $white       #ebdbb2
 set $darkwhite   #a89984
 # set $background  #000000
-set $transparent #1d202100
+set $transparent #1d202144
+set $transparent #57bae666
 
 bar {
     #verbose yes
