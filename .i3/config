@@ -50,7 +50,7 @@ client.urgent 	 		$orange $orange $baseB3 $red
 for_window [class=".*"] title_format "<span ><small>☆ %title </small></span>"
 
 #font xft:Ubuntu,FontAwesome 10
-font pango:VarelaRound-Regular,FontAwesome 14
+font pango:VarelaRound-Regular,FontAwesome 13
 
 
 # Enable auto back and forth
