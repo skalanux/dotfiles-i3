@@ -34,24 +34,24 @@ set $custom #1c5766
 
 # $i3-background
 #exec_always --no-startup-id xsetroot -solid '$baseB1'
+set $mod Mod4
+floating_modifier $mod
 
 ###################
 # solarized (clean)
 ###################
 # clientclass 			border  backgr. text 	indicator
-client.focused  		#222 $baseA4 $green $baseA1
-client.unfocused	    #222 $baseA4 #ffffff $baseA1
+client.focused_inactive #444444 #444444 #ffffff $baseA1
+client.focused          #444444 #444444 $yellow $baseA1
+client.unfocused  		#000000 #000000 #888888 $baseA1
 client.urgent 	 		$orange $orange $baseB3 $red
-#client.urgent 	 		$yellow $yellow $baseB3 $orange
-#client.focused_inactive 	$baseA2 $green $baseA2 $baseA1
-client.focused_inactive	#222 $baseA1 #ffffff $baseA1
+#
+# Using a combination of small and space, we can get some padding
+for_window [class=".*"] title_format "<span ><small>☆ %title </small></span>"
 
+#font xft:Ubuntu,FontAwesome 10
+font pango:VarelaRound-Regular,FontAwesome 14
 
-set $mod Mod4
-
-font xft:Ubuntu,FontAwesome 10
-
-floating_modifier $mod
 
 # Enable auto back and forth
 #workspace_auto_back_and_forth yes
@@ -257,6 +257,7 @@ set $white       #ebdbb2
 set $darkwhite   #a89984
 # set $background  #000000
 set $transparent #333333dd
+set $transparenttitle #33333300
 #set $transparent #57bae666
 
 bar {
@@ -265,7 +266,7 @@ bar {
     i3bar_command i3bar -t
     #status_command i3status -c $HOME/.i3/i3status.conf
     position bottom
-    font xft:Ubuntu, FontAwesome 10
+    font xft:VarelaRound-Regular, FontAwesome 10
     #strip_workspace_numbers yes
     separator_symbol ""
     bindsym button4 nop
@@ -403,7 +404,7 @@ bindsym Control+Tab mode "Launch: (p)Python (v)Volume (n)Notes (c)Calc (s)Slack 
 #############################
 
 # Disable window titlebars entirely
-for_window [class="^(?!Xfce4-notifyd$).*"] border pixel 2
+for_window [class="^(?!Xfce4-notifyd$).*"] border pixel 1
 # xfce4-notify
 for_window [class="xfce4-notifyd"] floating enable;border none; focus mode_toggle
 
