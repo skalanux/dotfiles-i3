@@ -64,9 +64,9 @@ workspace_layout tabbed
 bindsym $mod+Return workspace 3 ; exec terminator
 bindsym $mod+Shift+Return exec terminator -p notmux
 bindsym $mod+b workspace 2 ;exec firefox -p default;
-#bindsym $mod+n exec nautilus --no-desktop
+bindsym $mod+n exec nautilus --no-desktop
 #bindsym $mod+n exec nemo --no-desktop
-bindsym $mod+n exec pcmanfm
+#bindsym $mod+n exec pcmanfm
 
 # kill focused window
 bindsym $mod+q kill
