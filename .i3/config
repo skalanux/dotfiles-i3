@@ -325,6 +325,7 @@ exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id compton
 exec --no-startup-id volumeicon
 exec --no-startup-id unity-settings-daemon
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id nice -n 10 dropbox start
 exec --no-startup-id cheater
@@ -338,7 +339,6 @@ exec --no-startup-id clipit
 # Comment udiskie because is causing problems with docker
 #exec --no-startup-id udiskie
 
-exec_always --no-startup-id feh --bg-scale ~/.i3/wallpaper.png
 
 exec_always --no-startup-id rofi -key-ssh F1  -terminal "${HOME}/.i3/tmux-ssh-launch.sh" -fuzzy true -font "Carlito 14" -fg "#505050" -bg "#000000" -hlfg "#859900" -hlbg "#000000" -opacity 85 -padding 10
 
@@ -460,3 +460,6 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+# As a last thing setup de wallpaper to avoid corrupting the background
+exec_always --no-startup-id feh --bg-scale ~/.i3/wallpaper.png
