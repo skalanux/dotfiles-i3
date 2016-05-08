@@ -463,4 +463,4 @@ mode "$mode_gaps_outer" {
 
 # As a last thing setup de wallpaper to avoid corrupting the background
 #exec_always --no-startup-id feh --bg-scale ~/.i3/wallpaper.png
-exec_always --no-startup-id nitrogen --restore
+exec --no-startup-id "sleep 3 && nitrogen --restore"
