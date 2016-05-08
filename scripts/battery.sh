@@ -2,10 +2,15 @@
 
 ACPI=$(acpi -b)
 CHARGE=$(echo -n "${ACPI}" | egrep -o "[0-9]+%" | sed -e "s,%,,g")
+result=$(echo ${ACPI}|grep "discharging at zero rate")
+echo `acpi`|grep -qc "discharging"
+FALSE_DISCHARGING=`echo $?`
 
 STATE=""
 if grep -q "Charging\|Full" <(echo "${ACPI}" | awk '{ gsub("Unknown","Charging",$3); print $3}'); then
     STATE=""
+elif [ $FALSE_DISCHARGING -eq 0 ]; then
+    STATE=" Charged"
 else
     STATE=$(echo "${ACPI}" | awk -F' ' '{print $5}' | awk -F':' '{print $1":"$2}')
     STATE=" (${STATE}h)"
