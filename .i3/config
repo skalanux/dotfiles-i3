@@ -50,7 +50,8 @@ client.urgent 	 		$orange $orange $baseB3 $red
 for_window [class=".*"] title_format "<span ><small>☆ %title </small></span>"
 
 #font xft:Ubuntu,FontAwesome 10
-font pango:VarelaRound-Regular,FontAwesome 13
+#font pango:VarelaRound-Regular,FontAwesome 13
+font pango:Exo,FontAwesome 13
 
 
 # Enable auto back and forth
@@ -266,7 +267,8 @@ bar {
     i3bar_command i3bar -t
     #status_command i3status -c $HOME/.i3/i3status.conf
     position bottom
-    font xft:VarelaRound-Regular, FontAwesome 10
+    #font xft:VarelaRound-Regular, FontAwesome 10
+    font xft:Exo, FontAwesome 10
     #strip_workspace_numbers yes
     separator_symbol ""
     bindsym button4 nop
